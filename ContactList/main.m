@@ -28,7 +28,7 @@ int main(int argc, const char * argv[]) {
             
             break;
             
-        } else if ([menuInput isEqualToString:new]){
+        } else if ([menuInput isEqualToString:new]) {
             
             Contact *createdContact = [[Contact alloc]init];
             
@@ -39,6 +39,22 @@ int main(int argc, const char * argv[]) {
             createdContact.email = emailInput;
             
             [newList addContact:createdContact];
+            
+        }   else if ([menuInput isEqualToString:list]) {
+            
+            NSInteger contactNo = 00;
+            
+            for (Contact* contact in newList.list) {
+            
+                contactNo += 1;
+                NSLog(@"#%02ld: <%@> (%@)\n", contactNo, contact.name, contact.email);
+            
+            }
+            
+            
+        }   else {
+            
+            NSLog(@"Please enter a valid response.");
             
         }
     }
