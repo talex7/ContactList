@@ -11,7 +11,7 @@
 
 @interface ContactList : NSObject
 
-@property NSMutableArray *list;
+@property NSMutableArray<Contact *> *list;
 
 -(void)addContact:(Contact *)newContact;
 

@@ -20,9 +20,10 @@ int main(int argc, const char * argv[]) {
         NSString *quit = @"quit";
         NSString *new = @"new";
         NSString *list = @"list";
+        NSString *show = @"show";
         InputCollector *inputCollector = [[InputCollector alloc]init];
         
-        NSString *menuInput = [inputCollector inputForPrompt:@"What would you like do next?\n new - Create a new contact\n list - List all contacts\n quit - Exit Application\n"];
+        NSString *menuInput = [inputCollector inputForPrompt:@"What would you like do next?\n new - Create a new contact\n list - List all contacts\n show - Show information of a particular contact\n quit - Exit Application\n"];
         
         if ([menuInput isEqualToString:quit]) {
             
@@ -45,14 +46,22 @@ int main(int argc, const char * argv[]) {
             NSInteger contactNo = 00;
             
             for (Contact* contact in newList.list) {
-            
+                
                 contactNo += 1;
                 NSLog(@"#%02ld: <%@> (%@)\n", contactNo, contact.name, contact.email);
-            
+                
             }
             
             
-        }   else {
+        } else if ([menuInput isEqualToString:show]) {
+            
+            int showID = [[inputCollector inputForPrompt:@"Please enter the contact's ID no.:\n"]intValue];
+            
+            Contact *c = newList.list[showID - 1];
+            
+            NSLog(@"Name: %@ \nE-mail Address: %@ \n", c.name, c.email);
+            
+        } else {
             
             NSLog(@"Please enter a valid response.");
             
